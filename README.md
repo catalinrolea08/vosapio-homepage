@@ -19,10 +19,12 @@ go to nginx folder from root
 copy zip on disk
 extract files
 go to nginx-1.19.8\conf and open nginx-homepage.conf
-change line root         "E://IdeaProjects//MemesisAI Projects//MemesisAI-Homepage//build" to point to your build folder on disk
+change line root         "C://github//vosapio-homepage//build" to point to your build folder on disk
 to run nginx open cmd or powershell and run the start.bat from
-C:\github\MemesisAI Nginx\nginx-1.19.8-competiq
+C:\github\MemesisAI Nginx\nginx-1.19.8-vosapio
 to stop it run stop.bat
 
+The homepage is then served at http://localhost:8085/
+
 Repository
-C:\github\Competiq.ai-Homepage
+C:\github\vosapio-homepage
