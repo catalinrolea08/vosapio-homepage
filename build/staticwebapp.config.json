@@ -1,0 +1,51 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "routes": [
+    {
+      "route": "/agencies-added",
+      "rewrite": "/agencies-added.html"
+    },
+    {
+      "route": "/blog-added",
+      "rewrite": "/blog-added.html"
+    },
+    {
+      "route": "/bookademo-added",
+      "rewrite": "/bookademo-added.html"
+    },
+    {
+      "route": "/creators-added",
+      "rewrite": "/creators-added.html"
+    },
+    {
+      "route": "/docs-added",
+      "rewrite": "/docs-added.html"
+    },
+    {
+      "route": "/",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/media-added",
+      "rewrite": "/media-added.html"
+    },
+    {
+      "route": "/pricing-agencies-added",
+      "rewrite": "/pricing-agencies-added.html"
+    },
+    {
+      "route": "/pricing-brands-added",
+      "rewrite": "/pricing-brands-added.html"
+    },
+    {
+      "route": "/privacy-policy",
+      "rewrite": "/privacy-policy.html"
+    },
+    {
+      "route": "/terms-and-conditions",
+      "rewrite": "/terms-and-conditions.html"
+    }
+  ]
+}
