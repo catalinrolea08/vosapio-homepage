@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perceptify AI | Monitor and Improve your Brand's Visibility</title>
+    <title>Vosapio AI | Monitor and Improve your Brand's Visibility</title>
 
     @@include('src/partials/header-data.html')
 </head>
@@ -37,6 +37,56 @@
 <div class="w-full h-[1px] bg-blue-600" style="width: 100%; height: 1px; background-color: #E0E0E0;"></div>
 <!--=====PRICING AREA START=======-->
 
+<style>
+  /* Monthly / Annual price swap */
+  .price-annual { display: none; }
+  body.billing-annual .price-monthly { display: none; }
+  body.billing-annual .price-annual { display: inline; }
+
+  /* Billing toggle */
+  .billing-toggle-wrap {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    background: #f5f5f5; padding: 10px 0 26px;
+    font-family: 'Geist', sans-serif;
+  }
+  .billing-toggle-wrap .bt-label {
+    font-size: 15px; font-weight: 600; color: #999; cursor: pointer;
+    transition: color .2s ease; user-select: none;
+  }
+  .billing-toggle-wrap .bt-label.bt-on { color: #000; }
+  .billing-switch {
+    position: relative; width: 52px; height: 28px; border-radius: 999px;
+    background: #d4d4d4; border: none; cursor: pointer; padding: 0;
+    transition: background .2s ease;
+  }
+  body.billing-annual .billing-switch { background: #000; }
+  .billing-switch .knob {
+    position: absolute; top: 3px; left: 3px; width: 22px; height: 22px;
+    border-radius: 50%; background: #fff; transition: transform .2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  }
+  body.billing-annual .billing-switch .knob { transform: translateX(24px); }
+  .bt-save {
+    display: inline-block; margin-left: 6px; font-size: 12px; font-weight: 700;
+    color: #1a7f37; background: #e7f7ec; padding: 2px 8px; border-radius: 999px;
+  }
+
+  /* Add-on models */
+  .addon-line { opacity: .9; }
+  .addon-line .fa-circle-plus { color: #2563eb; }
+  .badge-addon {
+    display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .3px; color: #2563eb; background: #eaf1ff; padding: 1px 6px;
+    border-radius: 4px; margin-left: 4px; vertical-align: middle;
+  }
+  .model-item.model-addon { color: #666; }
+</style>
+
+<div class="billing-toggle-wrap">
+  <span class="bt-label bt-on" id="btMonthly">Monthly</span>
+  <button class="billing-switch" id="billingSwitch" aria-label="Toggle annual billing"><span class="knob"></span></button>
+  <span class="bt-label" id="btAnnual">Annual <span class="bt-save">2 months free</span></span>
+</div>
 
 <div class="pricing-section" style="background: #f5f5f5; padding: 40px 0;">
     <div class="container">
@@ -45,12 +95,13 @@
             <div class="col-lg-3 col-md-6">
                 <div class="pricing-card-v2 left-card">
                     <p class="plan-title">Starter</p>
-                    <h2 class="plan-price">€69<span>/mo</span></h2>
+                    <h2 class="plan-price"><span class="price-monthly">€69<span>/mo</span></span><span class="price-annual">€690<span>/yr</span></span></h2>
                     <span class="trial-badge">14 days free trial</span>
                     <p class="plan-desc" style="margin-top:15px;">For SEO managers and small teams who want to start monitoring AI visibility.</p>
                     <a href="/contact" class="btn-pricing btn-gray">Get Started</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 5 AI Models from the start <br><small>ChatGPT · AI Mode · AIO · Perplexity · Gemini</small></li>
+                        <li><i class="fa-regular fa-circle-check"></i> 3 AI Models included <br><small>ChatGPT · Perplexity · Google AI Overview</small></li>
+                        <li class="addon-line"><i class="fa-regular fa-circle-plus"></i> Add extra models — €19/mo each <br><small>Gemini · Copilot · Grok · AI Mode</small></li>
                         <li><i class="fa-regular fa-circle-check"></i> 50 prompts tracked</li>
                         <li><i class="fa-regular fa-circle-check"></i> 1 brand · 1 locations · 1 languages</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
@@ -69,14 +120,15 @@
             <div class="col-lg-3 col-md-6">
                 <div class="pricing-card-v2 popular-shadow" style="position: relative;">
                     <p class="plan-title">Growth</p>
-                    <h2 class="plan-price">€149<span>/mo</span></h2>
+                    <h2 class="plan-price"><span class="price-monthly">€179<span>/mo</span></span><span class="price-annual">€1.790<span>/yr</span></span></h2>
                     <span class="trial-badge">14 days free trial</span>
                     <p class="plan-desc" style="margin-top:15px;">For marketing teams that want complete insights and GEO execution.</p>
                     <a href="/contact" class="btn-pricing btn-black">Get Started</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 5 AI Models for growth <br><small>ChatGPT · AI Mode · AIO · Perplexity · Gemini</small></li>
+                        <li><i class="fa-regular fa-circle-check"></i> 3 AI Models included <br><small>ChatGPT · Perplexity · Google AI Overview</small></li>
+                        <li class="addon-line"><i class="fa-regular fa-circle-plus"></i> Add extra models — €45/mo each <br><small>Gemini · Copilot · Grok · AI Mode</small></li>
                         <li><i class="fa-regular fa-circle-check"></i> 150 prompts tracked</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 1 brand · 3 locations · 2 languages</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 2 brands · 3 locations · 2 languages</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
                         <li><i class="fa-regular fa-circle-check"></i> 2 personas</li>
                         <li><i class="fa-regular fa-circle-check"></i> Multi-turn conversations</li>
@@ -94,16 +146,17 @@
             <div class="col-lg-3 col-md-6">
                 <div class="pricing-card-v2">
                     <p class="plan-title">Advanced</p>
-                    <h2 class="plan-price">€299<span>/mo</span></h2>
+                    <h2 class="plan-price"><span class="price-monthly">€369<span>/mo</span></span><span class="price-annual">€3.690<span>/yr</span></span></h2>
                     <span class="trial-badge">14 days free trial</span>
                     <p class="plan-desc" style="margin-top:15px;">For marketing teams with multiple brands or a global presence.</p>
                     <a href="/contact" class="btn-pricing btn-gray">Get Started</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 5 AI Models <br><small>ChatGPT · AI Mode · AIO · Perplexity · Gemini</small></li>
+                        <li><i class="fa-regular fa-circle-check"></i> 3 AI Models included <br><small>ChatGPT · Perplexity · Google AI Overview</small></li>
+                        <li class="addon-line"><i class="fa-regular fa-circle-plus"></i> Add extra models — €99/mo each <br><small>Gemini · Copilot · Grok · AI Mode</small></li>
                         <li><i class="fa-regular fa-circle-check"></i> 350 prompts tracked</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 3 brand · 5 locations · 3 languages</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 5 brands · 3 locations · 3 languages</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Unlimited multi-country</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Multi-country tracking</li>
                         <li><i class="fa-regular fa-circle-check"></i> 3 personas</li>
                         <li class="highlight-seat"><i class="fa-regular fa-circle-check"></i> 10 seats</li>
                         <li><i class="fa-regular fa-circle-check"></i> AI-suggested prompts</li>
@@ -180,15 +233,15 @@
                     <th class="sticky-col feature-group-title">Features</th>
                     <th>
                         <span class="plan-header-title">Starter</span>
-                        <span class="plan-header-price">(€69/mo)</span>
+                        <span class="plan-header-price"><span class="price-monthly">(€69/mo)</span><span class="price-annual">(€690/yr)</span></span>
                     </th>
                     <th class="col-highlight text-center">
                         <span class="plan-header-title">Growth</span>
-                        <span class="plan-header-price">(€149/mo)</span>
+                        <span class="plan-header-price"><span class="price-monthly">(€179/mo)</span><span class="price-annual">(€1.790/yr)</span></span>
                     </th>
                     <th>
                         <span class="plan-header-title">Advanced</span>
-                        <span class="plan-header-price">(€299/mo)</span>
+                        <span class="plan-header-price"><span class="price-monthly">(€369/mo)</span><span class="price-annual">(€3.690/yr)</span></span>
                     </th>
                     <th style="border-left: 2px solid #f5f5f5">
                         <span class="plan-header-title">Enterprise</span>
@@ -204,35 +257,49 @@
                     </td>
                     <td>
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
                         <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
-                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok <span class="badge-addon">add-on</span></div>
                     </td>
                     <td class="col-highlight">
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
                         <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
-                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok <span class="badge-addon">add-on</span></div>
                     </td>
                     <td>
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
                         <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
-                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot <span class="badge-addon">add-on</span></div>
+                        <div class="model-item model-addon"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok <span class="badge-addon">add-on</span></div>
                     </td>
                     <td style="border-left: 2px solid #f5f5f5">
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
                         <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
                         <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
-                        <div class="model-item"><img src="assets/img/logo/claude-ai-icon.svg" class="model-icon"> Claude</div>
-                        <div class="model-item"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
                         <div class="model-item"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot</div>
+                        <div class="model-item"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok</div>
+                        <div class="model-item"><img src="assets/img/logo/claude-ai-icon.svg" class="model-icon"> Claude</div>
                     </td>
+                </tr>
+
+                <tr>
+                    <td class="sticky-col">Extra model add-on</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">€19/mo</td>
+                    <td class="col-highlight text-center">€45/mo</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">€99/mo</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">Included</td>
                 </tr>
 
                 <tr>
@@ -245,15 +312,15 @@
                 <tr>
                     <td class="sticky-col">Brands</td>
                     <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">1 brand</td>
-                    <td class="col-highlight text-center">1 brand</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">3 brands</td>
+                    <td class="col-highlight text-center">2 brands</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">5 brands</td>
                     <td class="text-center" style="border-left: 2px solid #f5f5f5">Unlimited</td>
                 </tr>
                 <tr>
                     <td class="sticky-col">Locations</td>
                     <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">1 location</td>
                     <td class="col-highlight text-center">3 locations</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">5 locations</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">3 locations</td>
                     <td class="text-center" style="border-left: 2px solid #f5f5f5">Unlimited</td>
                 </tr>
                 <tr>
@@ -325,14 +392,14 @@
 
         <div style="text-align: center; margin-bottom: 48px;">
             <h2 style="font-size: 42px; font-weight: 600; margin-bottom: 16px; letter-spacing: -1.5px; color: #000; line-height: 1.1;">FAQs</h2>
-            <p style="color: #737373; font-size: 18px; line-height: 1.5; margin: 0;">Everything you need to know about AI search visibility — and how Perceptify helps you win it.</p>
+            <p style="color: #737373; font-size: 18px; line-height: 1.5; margin: 0;">Everything you need to know about AI search visibility — and how Vosapio helps you win it.</p>
         </div>
 
         <div style="border-top: 1px solid rgba(0, 0, 0, 0.1);">
 
             <div class="faq-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1); overflow: hidden;">
                 <button onclick="this.parentElement.classList.toggle('active');" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 24px 0; background: transparent; border: none; cursor: pointer; color: #000; text-align: left; font-family: inherit; font-size: 16px; font-weight: 500;">
-                    <span style="flex: 1;">How do I get started with Perceptify AI?</span>
+                    <span style="flex: 1;">How do I get started with Vosapio AI?</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(199, 199, 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
@@ -346,28 +413,28 @@
 
             <div class="faq-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1); overflow: hidden;">
                 <button onclick="this.parentElement.classList.toggle('active');" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 24px 0; background: transparent; border: none; cursor: pointer; color: #000; text-align: left; font-family: inherit; font-size: 16px; font-weight: 500;">
-                    <span style="flex: 1;">Which AI models does Perceptify track?</span>
+                    <span style="flex: 1;">Which AI models does Vosapio track?</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(199, 199, 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Perceptify monitors visibility across the leading generative AI Models including ChatGPT, Perplexity, Gemini, and Claude — giving you a unified view of your brand's presence wherever AI-driven answers are being served.
+                        Vosapio monitors visibility across the leading generative AI Models including ChatGPT, Perplexity, Gemini, and Claude — giving you a unified view of your brand's presence wherever AI-driven answers are being served.
                     </div>
                 </div>
             </div>
 
             <div class="faq-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1); overflow: hidden;">
                 <button onclick="this.parentElement.classList.toggle('active');" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 24px 0; background: transparent; border: none; cursor: pointer; color: #000; text-align: left; font-family: inherit; font-size: 16px; font-weight: 500;">
-                    <span style="flex: 1;">How is Perceptify different from a traditional SEO tool?</span>
+                    <span style="flex: 1;">How is Vosapio different from a traditional SEO tool?</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(199, 199, 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Traditional SEO tools track rankings in search results pages. Perceptify tracks something newer: whether AI models recommend, cite, or mention your brand when users ask questions — a channel that SEO tools completely miss. And Perceptify make optimization to help your brand to be more visible.
+                        Traditional SEO tools track rankings in search results pages. Vosapio tracks something newer: whether AI models recommend, cite, or mention your brand when users ask questions — a channel that SEO tools completely miss. And Vosapio make optimization to help your brand to be more visible.
                     </div>
                 </div>
             </div>
@@ -388,7 +455,7 @@
 
             <div class="faq-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1); overflow: hidden;">
                 <button onclick="this.parentElement.classList.toggle('active');" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 24px 0; background: transparent; border: none; cursor: pointer; color: #000; text-align: left; font-family: inherit; font-size: 16px; font-weight: 500;">
-                    <span style="flex: 1;">What can I actually do with the insights Perceptify provides?</span>
+                    <span style="flex: 1;">What can I actually do with the insights Vosapio provides?</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(199, 199, 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
@@ -409,21 +476,21 @@
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Yes. Perceptify re-runs your prompts daily across every connected AI Models, so what you see always reflects the current state of your brand's visibility — not last week's snapshot. AI models shift constantly, and we make sure you're never flying blind.
+                        Yes. Vosapio re-runs your prompts daily across every connected AI Models, so what you see always reflects the current state of your brand's visibility — not last week's snapshot. AI models shift constantly, and we make sure you're never flying blind.
                     </div>
                 </div>
             </div>
 
             <div class="faq-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1); overflow: hidden;">
                 <button onclick="this.parentElement.classList.toggle('active');" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 24px 0; background: transparent; border: none; cursor: pointer; color: #000; text-align: left; font-family: inherit; font-size: 16px; font-weight: 500;">
-                    <span style="flex: 1;">How does Perceptify detect when my content influences an AI answer?</span>
+                    <span style="flex: 1;">How does Vosapio detect when my content influences an AI answer?</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(199, 199, 199)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        There's an important distinction we track: your content can influence an AI response without your URL ever appearing on screen. Perceptify separates implicit usage — where your content shaped the answer — from explicit citations, where your link is directly referenced. Both are tracked at domain and page level, so you get a complete picture of how much weight AI Models are actually giving your content.
+                        There's an important distinction we track: your content can influence an AI response without your URL ever appearing on screen. Vosapio separates implicit usage — where your content shaped the answer — from explicit citations, where your link is directly referenced. Both are tracked at domain and page level, so you get a complete picture of how much weight AI Models are actually giving your content.
                     </div>
                 </div>
             </div>
@@ -444,6 +511,26 @@
 </section>
 
 <!--=====SERVICE AREA END=======-->
+
+<script>
+  (function () {
+    var sw = document.getElementById('billingSwitch');
+    var mo = document.getElementById('btMonthly');
+    var an = document.getElementById('btAnnual');
+    if (!sw) return;
+    function setMode(annual) {
+      document.body.classList.toggle('billing-annual', annual);
+      mo.classList.toggle('bt-on', !annual);
+      an.classList.toggle('bt-on', annual);
+    }
+    sw.addEventListener('click', function () {
+      setMode(!document.body.classList.contains('billing-annual'));
+    });
+    mo.addEventListener('click', function () { setMode(false); });
+    an.addEventListener('click', function () { setMode(true); });
+  })();
+</script>
+
 @@include('src/partials/footer-menu.html')
 @@include('src/partials/footer-scripts.html')
 </body>
