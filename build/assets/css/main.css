@@ -26042,6 +26042,19 @@ li.has-dropdown1 span {
   cursor: pointer;
   margin-top: 10px;
 }
+/* Partner waitlist Submit button — override the shared blue .theme-btn1 to the
+   site's standard black button (matches .button-primary-agencies-partnership).
+   Scoped to #partner-waitlist so the same button stays blue on other pages. */
+#partner-waitlist .theme-btn1 {
+  background-color: #111111;
+  color: #fff;
+}
+#partner-waitlist .theme-btn1:hover {
+  background-color: #000000;
+}
+#partner-waitlist .theme-btn1::after {
+  display: none; /* hide the decorative blue texture so it reads as a clean flat black */
+}
 /* This wrapper handles the red margins without touching the global body */
 .agencies-partnership-v2-page-wrapper {
   background-color: #f5f5f5;
@@ -26545,7 +26558,7 @@ li.has-dropdown1 span {
   width: 90%;
   max-width: 1107px;
   margin: 0 auto; /* Keeps it centered inside the blue */
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 12px rgba(16,24,40,0.05), 0 0 38px rgba(16,24,40,0.05);
 }
 
 /* Header (Title and 94%) */

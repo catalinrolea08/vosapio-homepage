@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vosapio-homepage",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "build", "-p", "8085", "-c-1"],
+      "port": 8085
+    }
+  ]
+}
