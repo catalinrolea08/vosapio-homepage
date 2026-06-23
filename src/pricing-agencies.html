@@ -24,7 +24,7 @@
             <div class="col-lg-8 m-auto">
                 <div class="main-heading">
                     <!-- <h1>Pricing for Brands</h1> -->
-                    <h1 class="text-center pricing-title">Pricing for Brands</h1>
+                    <h1 class="text-center pricing-title">Pricing for Agencies</h1>
                     <p class="text-center promo-text">
                         Measure and improve your brand visibility across AI platforms with simple and powerful analytics
                     </p>
@@ -71,15 +71,48 @@
     color: #1a7f37; background: #e7f7ec; padding: 2px 8px; border-radius: 999px;
   }
 
+  /* Free-trial sub-line under the billing toggle */
+  .billing-subline {
+    text-align: center; margin: -14px 0 0; padding: 0 0 22px;
+    background: #f5f5f5; font-family: 'Geist', sans-serif;
+    font-size: 13px; color: #999;
+  }
+
   /* Add-on models */
-  .addon-line { opacity: .9; }
-  .addon-line .fa-circle-plus { color: #2563eb; }
   .badge-addon {
     display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
     letter-spacing: .3px; color: #2563eb; background: #eaf1ff; padding: 1px 6px;
     border-radius: 4px; margin-left: 4px; vertical-align: middle;
   }
+  .badge-api {
+    display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .3px; color: #6b7280; background: #eef0f2; padding: 1px 6px;
+    border-radius: 4px; margin-left: 4px; vertical-align: middle;
+  }
   .model-item.model-addon { color: #666; }
+
+  /* Card "choose your models" chips — 2 pe rând, aliniate (peec-style) */
+  .plan-features .model-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 6px 0 8px; }
+  .plan-features .model-chip {
+    display: flex; align-items: center; gap: 5px; min-width: 0;
+    font-size: 11px; line-height: 1.15; color: #374151; white-space: nowrap;
+    background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 8px; padding: 5px 8px;
+    cursor: default; transition: background .15s ease, border-color .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
+  }
+  .plan-features .model-chip:hover {
+    background: #eaf1ff; border-color: #2563eb; color: #1d4ed8;
+    transform: translateY(-1px); box-shadow: 0 2px 8px rgba(37, 99, 235, .15);
+  }
+  .plan-features .model-chip img { width: 14px; height: 14px; object-fit: contain; flex-shrink: 0; }
+
+  /* Comparison table header — plan name + larger price (peec-style) */
+  .pricing-table-v2 thead .plan-header-title { display:block; font-size:18px; font-weight:600; color:#555; letter-spacing:-.2px; }
+  .pricing-table-v2 thead .plan-header-price { display:block; margin-top:4px; font-size:26px; font-weight:800; color:#0a0a0a; }
+
+  /* Card price: big BLACK number (same size as "Custom") — toggle spans must not shrink it */
+  .pricing-section .plan-price { color: #0a0a0a; }
+  .pricing-section .plan-price .price-monthly,
+  .pricing-section .plan-price .price-annual { font-size: inherit; font-weight: inherit; color: inherit; }
 </style>
 
 <div class="billing-toggle-wrap">
@@ -87,6 +120,7 @@
   <button class="billing-switch" id="billingSwitch" aria-label="Toggle annual billing"><span class="knob"></span></button>
   <span class="bt-label" id="btAnnual">Annual <span class="bt-save">2 months free</span></span>
 </div>
+<p class="billing-subline">14-day free trial on all plans</p>
 
 <div class="pricing-section" style="background: #f5f5f5; padding: 40px 0;">
     <div class="container">
@@ -94,25 +128,26 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="pricing-card-v2 left-card">
-                    <p class="plan-title">Starter</p>
-                    <h2 class="plan-price"><span class="price-monthly">€69<span>/mo</span></span><span class="price-annual">€690<span>/yr</span></span></h2>
-                    <span class="trial-badge">14 days free trial</span>
-                    <p class="plan-desc" style="margin-top:15px;">For SEO managers and small teams who want to start monitoring AI visibility.</p>
-                    <a href="/contact" class="btn-pricing btn-gray">Get Started</a>
+                    <p class="plan-title">Essential</p>
+                    <h2 class="plan-price"><span class="price-monthly">€179<span>/mo</span></span><span class="price-annual">€149<span>/mo</span></span></h2>
+                    <p class="plan-desc" style="margin-top:15px;">For agencies that are starting with AI Search visibility and optimization and want to win their first customers</p>
+                    <a href="/bookademo" class="btn-pricing btn-gray">Get Started</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 3 AI Models included <br><small>ChatGPT · Perplexity · Google AI Overview</small></li>
-                        <li class="addon-line"><i class="fa-regular fa-circle-plus"></i> Add extra models — €19/mo each <br><small>Gemini · Copilot · Grok · AI Mode</small></li>
-                        <li><i class="fa-regular fa-circle-check"></i> 50 prompts tracked</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 1 brand · 1 locations · 1 languages</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 10,000 credits/month</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Track up to 6 models</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 3 client projects</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 3 active pitch projects</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 25 prompts per pitch</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Unlimited users</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 3 seats</li>
-                        <li><i class="fa-regular fa-circle-check"></i> AI-suggested prompts</li>
-                        <li><i class="fa-regular fa-circle-check"></i> AI Statements + Keywords + Citations</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Sentiment per conversatie</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Statements + Citation Sources &amp; domain analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Sentiment analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> White-label reporting</li>
                         <li><i class="fa-regular fa-circle-check"></i> Data retention: 3 months</li>
                         <li><i class="fa-regular fa-circle-check"></i> Exports</li>
+                        <li><i class="fa-regular fa-circle-check"></i> API access</li>
                         <li><i class="fa-regular fa-circle-check"></i> Email support</li>
-                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation 1/day <span class="badge-soon">soon</span></li>
+                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation per client <span class="badge-soon">soon</span></li>
                     </ul>
                 </div>
             </div>
@@ -120,52 +155,53 @@
             <div class="col-lg-3 col-md-6">
                 <div class="pricing-card-v2 popular-shadow" style="position: relative;">
                     <p class="plan-title">Growth</p>
-                    <h2 class="plan-price"><span class="price-monthly">€179<span>/mo</span></span><span class="price-annual">€1.790<span>/yr</span></span></h2>
-                    <span class="trial-badge">14 days free trial</span>
-                    <p class="plan-desc" style="margin-top:15px;">For marketing teams that want complete insights and GEO execution.</p>
-                    <a href="/contact" class="btn-pricing btn-black">Get Started</a>
+                    <h2 class="plan-price"><span class="price-monthly">€379<span>/mo</span></span><span class="price-annual">€316<span>/mo</span></span></h2>
+                    <p class="plan-desc" style="margin-top:15px;">For agencies with 5–10 clients that want flexible reporting per client.</p>
+                    <a href="/bookademo" class="btn-pricing btn-black">Get Started</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 3 AI Models included <br><small>ChatGPT · Perplexity · Google AI Overview</small></li>
-                        <li class="addon-line"><i class="fa-regular fa-circle-plus"></i> Add extra models — €45/mo each <br><small>Gemini · Copilot · Grok · AI Mode</small></li>
-                        <li><i class="fa-regular fa-circle-check"></i> 150 prompts tracked</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 2 brands · 3 locations · 2 languages</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 25,000 credits/month</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Track up to 6 models</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 10 client projects</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 5 active pitch projects</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 50 prompts per pitch</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Unlimited users</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 2 personas</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Multi-turn conversations</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 5 seats</li>
-                        <li><i class="fa-regular fa-circle-check"></i> AI-suggested prompts</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Sentiment per citation (Top 1,000)</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Statements + Citation Sources &amp; domain analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Sentiment analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> White-label reporting</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Multi-country per client</li>
                         <li><i class="fa-regular fa-circle-check"></i> Data retention: 6 months</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Competitor tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Email support</li>
-                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation 5/day <span class="badge-soon">soon</span></li>
+                        <li><i class="fa-regular fa-circle-check"></i> Exports</li>
+                        <li><i class="fa-regular fa-circle-check"></i> API access</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Chat + Email support</li>
+                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation per client <span class="badge-soon">soon</span></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-6">
                 <div class="pricing-card-v2">
-                    <p class="plan-title">Advanced</p>
-                    <h2 class="plan-price"><span class="price-monthly">€369<span>/mo</span></span><span class="price-annual">€3.690<span>/yr</span></span></h2>
-                    <span class="trial-badge">14 days free trial</span>
-                    <p class="plan-desc" style="margin-top:15px;">For marketing teams with multiple brands or a global presence.</p>
-                    <a href="/contact" class="btn-pricing btn-gray">Get Started</a>
+                    <p class="plan-title">Scale</p>
+                    <h2 class="plan-price"><span class="price-monthly">€599<span>/mo</span></span><span class="price-annual">€499<span>/mo</span></span></h2>
+                    <p class="plan-desc" style="margin-top:15px;">For agencies with 15–25 clients that need high volume and integrations.</p>
+                    <a href="/bookademo" class="btn-pricing btn-gray">Get Started</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 3 AI Models included <br><small>ChatGPT · Perplexity · Google AI Overview</small></li>
-                        <li class="addon-line"><i class="fa-regular fa-circle-plus"></i> Add extra models — €99/mo each <br><small>Gemini · Copilot · Grok · AI Mode</small></li>
-                        <li><i class="fa-regular fa-circle-check"></i> 350 prompts tracked</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 5 brands · 3 locations · 3 languages</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 65,000 credits/month</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Track up to 6 models</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 25 client projects</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 7 active pitch projects</li>
+                        <li><i class="fa-regular fa-circle-check"></i> 75 prompts per pitch</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Unlimited users</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Multi-country tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> 3 personas</li>
-                        <li class="highlight-seat"><i class="fa-regular fa-circle-check"></i> 10 seats</li>
-                        <li><i class="fa-regular fa-circle-check"></i> AI-suggested prompts</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Sentiment per citation (Top 10,000)</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Data retention: 12 months</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Competitor tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Custom onboarding</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Statements + Citation Sources &amp; domain analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Sentiment analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> White-label reporting</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Multi-country per client</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Data retention: 9 months</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Exports</li>
+                        <li><i class="fa-regular fa-circle-check"></i> API access</li>
                         <li><i class="fa-regular fa-circle-check"></i> Chat + Email support</li>
-                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation 10/day <span class="badge-soon">soon</span></li>
+                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation per client <span class="badge-soon">soon</span></li>
                     </ul>
                 </div>
             </div>
@@ -174,31 +210,38 @@
                 <div class="pricing-card-v2 right-card">
                     <p class="plan-title">Enterprise</p>
                     <h2 class="plan-price">Custom</h2>
-                    <span class="trial-badge">Monthly/Annual</span>
-                    <p class="plan-desc" style="margin-top:15px;">For global brands with custom needs and enterprise integrations.</p>
-                    <a href="/contact" class="btn-pricing btn-gray">Get a Demo</a>
+                    <p class="plan-desc" style="margin-top:15px;">For global agencies with dozens of clients and advanced integrations.</p>
+                    <a href="/bookademo" class="btn-pricing btn-gray">Get a Demo</a>
                     <ul class="plan-features">
-                        <li><i class="fa-regular fa-circle-check"></i> 10+ AI Models (Claude, Grok, DeepSeek, Meta AI, Copilot)</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Unlimited brands</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Unlimited prompts</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Unlimited personas</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Unlimited seats</li>
-                        <li><i class="fa-regular fa-circle-check"></i> AI-suggested prompts</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Unlimited credits/month </li>
+                        <li><i class="fa-regular fa-circle-check"></i> Custom AI models</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Unlimited clients/month </li>
+                        <li><i class="fa-regular fa-circle-check"></i> Unlimited users</li>
                         <li><i class="fa-regular fa-circle-check"></i> Daily tracking</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Chat with Your Data</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Statements + Citation Sources &amp; domain analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Multi-country per client</li>
                         <li><i class="fa-regular fa-circle-check"></i> Data retention: 12 months</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Competitor tracking</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Sentiment analysis</li>
+                        <li><i class="fa-regular fa-circle-check"></i> White-label reporting</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Exports</li>
                         <li><i class="fa-regular fa-circle-check"></i> API access</li>
-                        <li><i class="fa-regular fa-circle-check"></i> Dedicated Support</li>
-
-                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation custom/day <span class="badge-soon">soon</span></li>
+                        <li><i class="fa-regular fa-circle-check"></i> Chat + Email support</li>
+                        <li class="upcoming"><i class="fa-regular fa-circle-check"></i> Content generation per client <span class="badge-soon">soon</span></li>
                     </ul>
                 </div>
             </div>
 
         </div>
     </div>
+    <div class="container-wrapper-agencies-v4">
+        <div class="container-agencies-v4">
+            <p class="formula-text-agencies-v4">
+                <strong>Credits Formula:</strong> 1 credit = 1 prompt × 1 model × 1 day. Unused credits don’t roll over. Add-on credits available anytime.
+            </p>
+        </div>
+    </div>
 </div>
+
 
 
 
@@ -213,8 +256,8 @@
         <strong>Want to control your audience searches differently today?</strong> <span>Monitor prompts across multiple brands.</span>
     </p>
 </div>
-    <a href="/pricing-agencies-added" class="btn-agency">
-        See agency pricing <i class="fa-solid fa-arrow-right"></i>
+    <a href="/pricing-brands" class="btn-agency">
+        See brands pricing <i class="fa-solid fa-arrow-right"></i>
     </a>
 </div>
 </div>
@@ -232,20 +275,20 @@
                 <tr>
                     <th class="sticky-col feature-group-title">Features</th>
                     <th>
-                        <span class="plan-header-title">Starter</span>
-                        <span class="plan-header-price"><span class="price-monthly">(€69/mo)</span><span class="price-annual">(€690/yr)</span></span>
+                        <span class="plan-header-title">Essential</span>
+                        <span class="plan-header-price"><span class="price-monthly">€179/mo</span><span class="price-annual">€149/mo</span></span>
                     </th>
                     <th class="col-highlight text-center">
                         <span class="plan-header-title">Growth</span>
-                        <span class="plan-header-price"><span class="price-monthly">(€179/mo)</span><span class="price-annual">(€1.790/yr)</span></span>
+                        <span class="plan-header-price"><span class="price-monthly">€379/mo</span><span class="price-annual">€316/mo</span></span>
                     </th>
                     <th>
-                        <span class="plan-header-title">Advanced</span>
-                        <span class="plan-header-price"><span class="price-monthly">(€369/mo)</span><span class="price-annual">(€3.690/yr)</span></span>
+                        <span class="plan-header-title">Scale</span>
+                        <span class="plan-header-price"><span class="price-monthly">€599/mo</span><span class="price-annual">€499/mo</span></span>
                     </th>
                     <th style="border-left: 2px solid #f5f5f5">
                         <span class="plan-header-title">Enterprise</span>
-                        <span class="plan-header-price">(Custom)</span>
+                        <span class="plan-header-price">Custom</span>
                     </th>
                 </tr>
                 </thead>
@@ -257,91 +300,92 @@
                     </td>
                     <td>
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
                         <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok <span class="badge-addon">add-on</span></div>
+                        <div class="model-item"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot</div>
+                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
                     </td>
                     <td class="col-highlight">
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
                         <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok <span class="badge-addon">add-on</span></div>
+                        <div class="model-item"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot</div>
+                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
                     </td>
                     <td>
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
                         <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot <span class="badge-addon">add-on</span></div>
-                        <div class="model-item model-addon"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok <span class="badge-addon">add-on</span></div>
+                        <div class="model-item"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot</div>
+                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
                     </td>
                     <td style="border-left: 2px solid #f5f5f5">
                         <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> ChatGPT</div>
-                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
-                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
-                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
                         <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Mode</div>
+                        <div class="model-item"><img src="assets/img/logo/google-color-icon.svg" class="model-icon"> AI Overviews</div>
                         <div class="model-item"><img src="assets/img/logo/copilot-icon.svg" class="model-icon"> Microsoft Copilot</div>
-                        <div class="model-item"><img src="assets/img/logo/grok-icon.svg" class="model-icon"> Grok</div>
-                        <div class="model-item"><img src="assets/img/logo/claude-ai-icon.svg" class="model-icon"> Claude</div>
+                        <div class="model-item"><img src="assets/img/logo/perplexity-ai-icon.svg" class="model-icon"> Perplexity</div>
+                        <div class="model-item"><img src="assets/img/logo/google-gemini-icon.svg" class="model-icon"> Gemini</div>
+                        <div class="model-item"><img src="assets/img/logo/claude-ai-icon.svg" class="model-icon"> Claude Sonnet 4 <span class="badge-api">API</span></div>
+                        <div class="model-item"><img src="assets/img/logo/chatgpt-icon.svg" class="model-icon"> GPT 5 Search <span class="badge-api">API</span></div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="sticky-col">Extra model add-on</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">€19/mo</td>
-                    <td class="col-highlight text-center">€45/mo</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">€99/mo</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">Included</td>
-                </tr>
-
-                <tr>
-                    <td class="sticky-col">Prompts tracked</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">50</td>
-                    <td class="col-highlight text-center">150</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">350</td>
+                    <td class="sticky-col">Monthly credits</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">10,000</td>
+                    <td class="col-highlight text-center">25,000</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">65,000</td>
                     <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">Unlimited</td>
                 </tr>
                 <tr>
-                    <td class="sticky-col">Brands</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">1 brand</td>
-                    <td class="col-highlight text-center">2 brands</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">5 brands</td>
-                    <td class="text-center" style="border-left: 2px solid #f5f5f5">Unlimited</td>
+                    <td class="sticky-col">Number of projects</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">3</td>
+                    <td class="col-highlight text-center">10</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">25</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">Unlimited</td>
                 </tr>
                 <tr>
-                    <td class="sticky-col">Locations</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">1 location</td>
-                    <td class="col-highlight text-center">3 locations</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">3 locations</td>
-                    <td class="text-center" style="border-left: 2px solid #f5f5f5">Unlimited</td>
-                </tr>
-                <tr>
-                    <td class="sticky-col">Language</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">1 language</td>
-                    <td class="col-highlight text-center">2 languages</td>
-                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">3 languages</td>
-                    <td class="text-center" style="border-left: 2px solid #f5f5f5">Unlimited</td>
-                </tr>
-
-                <tr class="section-row">
-                    <td colspan="5" class="sticky-col">Advanced features</td>
+                    <td class="sticky-col">Multi country</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">-</td>
+                    <td class="col-highlight text-center">✔</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">✔</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">✔</td>
                 </tr>
                 <tr>
                     <td class="sticky-col">API Access</td>
-                    <td class="text-center">-</td>
-                    <td class="col-highlight text-center">-</td>
-                    <td class="text-center">-</td>
-                    <td class="text-center" style="border-left: 2px solid #f5f5f5">✔</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">✔</td>
+                    <td class="col-highlight text-center">✔</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">✔</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">✔</td>
                 </tr>
-
+                <tr>
+                    <td class="sticky-col">Users</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">Unlimited </td>
+                    <td class="col-highlight text-center">Unlimited </td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">Unlimited </td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">Unlimited </td>
+                </tr>
+                <tr>
+                    <td class="sticky-col">Active pitch projects</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">3</td>
+                    <td class="col-highlight text-center">5</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">7</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">10</td>
+                </tr>
+                <tr>
+                    <td class="sticky-col">Prompts per pitch</td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">25 </td>
+                    <td class="col-highlight text-center">50 </td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;">75 </td>
+                    <td class="text-center" style="border-top:1px solid #f5f5f5; border-bottom:1px solid #f5f5f5;border-left: 2px solid #f5f5f5">Unlimited </td>
+                </tr>
+                <tr class="section-row">
+                    <td colspan="5" class="sticky-col">Advanced features</td>
+                </tr>
                 <tr>
                     <td class="sticky-col">Content generation</td>
                     <td class="text-center" style="border-top:2px solid #f5f5f5; border-bottom:2px solid #f5f5f5;"><span class="badge-soon-v2">soon</span></td>
@@ -364,16 +408,16 @@
                 <tr>
                     <td class="sticky-col" style="border:none"></td>
                     <td style="padding-top:30px;">
-                        <a href="#" class="btn-pricing btn-gray">Get started</a>
+                        <a href="/bookademo" class="btn-pricing btn-gray">Get started</a>
                     </td>
                     <td class="col-highlight" style="padding-top:30px;">
-                        <a href="#" class="btn-pricing btn-black">Get started</a>
+                        <a href="/bookademo" class="btn-pricing btn-black">Get started</a>
                     </td>
                     <td style="padding-top:30px;">
-                        <a href="#" class="btn-pricing btn-gray">Get started</a>
+                        <a href="/bookademo" class="btn-pricing btn-gray">Get started</a>
                     </td>
                     <td style="padding-top:30px;">
-                        <a href="#" class="btn-pricing btn-gray">Get a Demo</a>
+                        <a href="/bookademo" class="btn-pricing btn-gray">Get a Demo</a>
                     </td>
                 </tr>
                 </tbody>
@@ -406,7 +450,7 @@
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Connect your brand by entering your domain and company name, then define 3–5 prompts that mirror how your customers search. In less than 24 hours, your dashboard will surface exactly where and how often AI Models mention you.
+                        Connect your brand by entering your domain and company name, then define 3–5 prompts that mirror how your customers search. In less than 24 hours, your dashboard will surface exactly where and how often AI engines mention you.
                     </div>
                 </div>
             </div>
@@ -420,7 +464,7 @@
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Vosapio monitors visibility across the leading generative AI Models including ChatGPT, Perplexity, Gemini, and Claude — giving you a unified view of your brand's presence wherever AI-driven answers are being served.
+                        Vosapio monitors visibility across the leading generative engines including ChatGPT, Perplexity, Gemini, and Claude — giving you a unified view of your brand's presence wherever AI-driven answers are being served.
                     </div>
                 </div>
             </div>
@@ -462,7 +506,7 @@
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Every insight comes with actionable recommendations — from content structure improvements to source authority signals — so you know exactly what to fix to increase the likelihood of being recommended by AI Models.
+                        Every insight comes with actionable recommendations — from content structure improvements to source authority signals — so you know exactly what to fix to increase the likelihood of being recommended by AI engines.
                     </div>
                 </div>
             </div>
@@ -476,7 +520,7 @@
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        Yes. Vosapio re-runs your prompts daily across every connected AI Models, so what you see always reflects the current state of your brand's visibility — not last week's snapshot. AI models shift constantly, and we make sure you're never flying blind.
+                        Yes. Vosapio re-runs your prompts daily across every connected AI engine, so what you see always reflects the current state of your brand's visibility — not last week's snapshot. AI models shift constantly, and we make sure you're never flying blind.
                     </div>
                 </div>
             </div>
@@ -490,7 +534,7 @@
                 </button>
                 <div class="faq-content" style="max-height: 0; opacity: 0; transition: all 0.3s ease-in-out; color: #737373; font-size: 14px; line-height: 1.6; padding: 0;">
                     <div style="padding-bottom: 24px;">
-                        There's an important distinction we track: your content can influence an AI response without your URL ever appearing on screen. Vosapio separates implicit usage — where your content shaped the answer — from explicit citations, where your link is directly referenced. Both are tracked at domain and page level, so you get a complete picture of how much weight AI Models are actually giving your content.
+                        There's an important distinction we track: your content can influence an AI response without your URL ever appearing on screen. Vosapio separates implicit usage — where your content shaped the answer — from explicit citations, where your link is directly referenced. Both are tracked at domain and page level, so you get a complete picture of how much weight AI engines are actually giving your content.
                     </div>
                 </div>
             </div>
@@ -535,3 +579,4 @@
 @@include('src/partials/footer-scripts.html')
 </body>
 </html>
+

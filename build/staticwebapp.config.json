@@ -4,40 +4,40 @@
   },
   "routes": [
     {
-      "route": "/agencies-added",
-      "rewrite": "/agencies-added.html"
+      "route": "/agencies",
+      "rewrite": "/agencies.html"
     },
     {
-      "route": "/blog-added",
-      "rewrite": "/blog-added.html"
+      "route": "/blog",
+      "rewrite": "/blog.html"
     },
     {
-      "route": "/bookademo-added",
-      "rewrite": "/bookademo-added.html"
+      "route": "/bookademo",
+      "rewrite": "/bookademo.html"
     },
     {
-      "route": "/creators-added",
-      "rewrite": "/creators-added.html"
+      "route": "/creators",
+      "rewrite": "/creators.html"
     },
     {
-      "route": "/docs-added",
-      "rewrite": "/docs-added.html"
+      "route": "/docs",
+      "rewrite": "/docs.html"
     },
     {
       "route": "/",
       "rewrite": "/index.html"
     },
     {
-      "route": "/media-added",
-      "rewrite": "/media-added.html"
+      "route": "/media",
+      "rewrite": "/media.html"
     },
     {
-      "route": "/pricing-agencies-added",
-      "rewrite": "/pricing-agencies-added.html"
+      "route": "/pricing-agencies",
+      "rewrite": "/pricing-agencies.html"
     },
     {
-      "route": "/pricing-brands-added",
-      "rewrite": "/pricing-brands-added.html"
+      "route": "/pricing-brands",
+      "rewrite": "/pricing-brands.html"
     },
     {
       "route": "/privacy-policy",
