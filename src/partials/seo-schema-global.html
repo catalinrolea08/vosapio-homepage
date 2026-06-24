@@ -1,0 +1,58 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     Schema.org JSON-LD — GLOBAL (loads on every page via header-data.html)
+     Defines the business entity (Organization) and the site (WebSite).
+
+     TODO (fill in once available — DO NOT invent these):
+       • legalName + identifier (company registration / CUI)
+       • taxID / vatID
+       • address (PostalAddress)
+       • contactPoint (email + telephone) — no Vosapio email yet
+       • sameAs: add real X (Twitter) and YouTube URLs (currently placeholders in footer)
+       • logo / og:image: replace favicon.svg with a dedicated raster logo (min 112px)
+         and a 1200×630 social-share image
+     ════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.vosapio.com/#organization",
+  "name": "Vosapio",
+  "alternateName": "Vosapio AI",
+  "url": "https://www.vosapio.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.vosapio.com/assets/img/logo/favicon.svg"
+  },
+  "description": "Vosapio is an AI search visibility platform. It monitors and improves how brands appear across AI engines such as ChatGPT, Perplexity, Gemini, Claude, Microsoft Copilot, Google AI Overviews and Grok, and uses marketing agents to improve visibility, rankings and sentiment.",
+  "slogan": "A Complete Platform for Marketing Agents",
+  "sameAs": [
+    "https://www.linkedin.com/company/vosapio"
+  ],
+  "knowsAbout": [
+    "AI Search Visibility",
+    "Generative Engine Optimization",
+    "Answer Engine Optimization",
+    "AI Search Monitoring",
+    "Brand Visibility in AI",
+    "Large Language Model Visibility",
+    "Share of Voice in AI Search",
+    "Search Engine Optimization"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.vosapio.com/#website",
+  "url": "https://www.vosapio.com",
+  "name": "Vosapio",
+  "alternateName": "Vosapio AI",
+  "description": "Monitor and improve your brand's visibility across AI search engines.",
+  "publisher": {
+    "@id": "https://www.vosapio.com/#organization"
+  },
+  "inLanguage": "en"
+}
+</script>

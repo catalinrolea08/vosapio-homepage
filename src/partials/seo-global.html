@@ -1,0 +1,31 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     SEO GLOBAL — site-wide <head> defaults, included on every page.
+     Per-page <title>, <meta description> and og:title/description/url are
+     set directly in each page and override/complement these defaults.
+     ════════════════════════════════════════════════════════════════ -->
+
+<!-- ═══ SEO Global Meta ═══ -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="Vosapio">
+<meta name="publisher" content="Vosapio">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Open Graph defaults -->
+<meta property="og:site_name" content="Vosapio">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vosapio.com/assets/img/logo/favicon.svg">
+<meta property="og:image:alt" content="Vosapio logo">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.vosapio.com/assets/img/logo/favicon.svg">
+
+<!-- TODO (social/OG): add a dedicated 1200×630 PNG/JPG share card and point
+     og:image + twitter:image to it — SVG does NOT render in most social
+     previews (Facebook / LinkedIn / X). Suggested path: /assets/img/logo/og-image.png
+     Also add <meta name="twitter:site"> / <meta name="twitter:creator"> once the
+     X (Twitter) account exists. -->
+
+<!-- ═══ Schema.org Global (Organization + WebSite) ═══ -->
+@@include('src/partials/seo-schema-global.html')
