@@ -1,46 +1,90 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("contactSubmit").addEventListener("click", function () {
+
+    const form = document.querySelector(".needs-validation");
+    const submitBtn = document.getElementById("contactSubmit");
+    const successMsg = document.getElementById("success_message");
+    const errorMsg = document.getElementById("error_message");
+    const gdprCheckbox = document.getElementById("gdprConsent");
+
+    if (!form || !submitBtn) return;
+
+    let lastSubmittedData = null;
+
+    submitBtn.addEventListener("click", function () {
+
+        if (!form.checkValidity()) {
+            form.classList.add("was-validated");
+            return;
+        }
+
+        if (gdprCheckbox && !gdprCheckbox.checked) {
+            gdprCheckbox.closest(".gdpr-checkbox").classList.add("gdpr-error");
+            return;
+        }
+
+        if (gdprCheckbox) {
+            gdprCheckbox.closest(".gdpr-checkbox").classList.remove("gdpr-error");
+        }
+
+        const formData = getFormData();
         const url = "https://app.memesisai.com/ROCEX_BE/contact";
-        //const url1 = "http://localhost:8081/ROCEX_BE/contact"
         const token = uuidv4();
+
         let headers = new Headers();
         headers.set("Content-Type", "application/json");
         headers.set("X-XSRF-TOKEN", token);
+
         document.cookie = "XSRF-TOKEN=" + token + "; path=/ROCEX_BE; Secure; SameSite=Lax";
+
         fetch(url, {
             method: "POST",
-            body: JSON.stringify(
-                {
-                    firstName: document.getElementById("firstName").value,
-                    lastName: document.getElementById("lastName").value,
-                    message: document.getElementById("message").value,
-                    email: document.getElementById("email").value,
-                    subject: document.getElementById("subject").value,
-                    phoneNumber: document.getElementById("phoneNumber").value
-                }
-            ),
-            headers: headers,
+            body: JSON.stringify(formData),
+            headers,
             credentials: "include"
-        }).then((response) => {
-            if (response.status === 200) {
-                document.getElementById("success_message").classList.remove("d-none");
-                document.getElementById("error_message").classList.add("d-none");
-                window.dataLayer = window.dataLayer || [];
-                dataLayer.push({
-                    event: 'contact_form_submit',
-                    formName: 'Contact Page'
-                });
-            } else {
-                document.getElementById("success_message").classList.add("d-none");
-                document.getElementById("error_message").classList.remove("d-none");
-            }
         })
-            .catch(err => {
-                document.getElementById("success_message").classList.add("d-none");
-                document.getElementById("error_message").classList.remove("d-none");
-                console.error(err);
+            .then(response => {
+                if (response.status === 200) {
+
+                    lastSubmittedData = JSON.stringify(formData);
+                    submitBtn.disabled = true;
+
+                    successMsg.classList.remove("d-none");
+                    errorMsg.classList.add("d-none");
+
+                    window.dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: 'contact_form_submit',
+                        formName: 'Agency Partner Waitlist'
+                    });
+
+                } else {
+                    throw new Error("Server error");
+                }
+            })
+            .catch(() => {
+                successMsg.classList.add("d-none");
+                errorMsg.classList.remove("d-none");
             });
     });
+
+    form.addEventListener("input", () => {
+        if (!lastSubmittedData) return;
+
+        if (JSON.stringify(getFormData()) !== lastSubmittedData) {
+            submitBtn.disabled = false;
+        }
+    });
+
+    function getFormData() {
+        return {
+            firstName: firstName.value.trim(),
+            lastName: lastName.value.trim(),
+            email: email.value.trim(),
+            phoneNumber: phoneNumber.value.trim(),
+            subject: subject.value.trim(),
+            message: message.value.trim()
+        };
+    }
 });
 
 function uuidv4() {

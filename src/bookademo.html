@@ -6,6 +6,7 @@
     <title>Vosapio AI | Monitor and Improve your Brand's Visibility</title>
 
     @@include('src/partials/header-data.html')
+    <script src="/assets/js/contact.js" defer></script>
 </head>
 <body class="body tg-heading-subheading animation-style3">
 
@@ -42,32 +43,42 @@
 
         <div class="form-card-bookademo">
             <h2 class="form-title-bookademo">How can we help?</h2>
-            <form class="form-bookademo">
+            <form class="form-bookademo needs-validation" novalidate>
                 <div class="input-group-bookademo">
-                    <input id="fullName" type="text" placeholder="Full name*" required>
+                    <input id="firstName" type="text" placeholder="First name*" required aria-required="true">
                 </div>
                 <div class="input-group-bookademo">
-                    <input id="email" type="email" placeholder="Work email*" required>
+                    <input id="lastName" type="text" placeholder="Last name*" required aria-required="true">
                 </div>
                 <div class="input-group-bookademo">
-                    <input id="company" type="text" placeholder="Company*" required>
+                    <input id="email" type="email" placeholder="Work email*" required aria-required="true">
                 </div>
                 <div class="input-group-bookademo">
-                    <input id="companySize" type="text" placeholder="Company size*" required>
+                    <input id="phoneNumber" type="tel" placeholder="Phone">
                 </div>
                 <div class="input-group-bookademo">
-                    <textarea id="message" placeholder="How did you hear about Vosapio?*" rows="4" required></textarea>
+                    <input id="subject" type="text" placeholder="Subject*" required aria-required="true">
+                </div>
+                <div class="input-group-bookademo">
+                    <textarea id="message" placeholder="How did you hear about Vosapio?*" rows="4" required aria-required="true"></textarea>
                 </div>
 
-                <label class="checkbox-container-bookademo">
-                    <input type="checkbox">
+                <label class="checkbox-container-bookademo gdpr-checkbox">
+                    <input type="checkbox" id="gdprConsent" required aria-required="true">
                     <span class="checkmark-bookademo"></span>
-                    We're an agency
+                    I agree to Vosapio processing my personal data to respond to my enquiry, in accordance with the <a href="/privacy-policy">Privacy Policy</a>.
                 </label>
 
                 <div class="form-footer-bookademo">
                     <p>We’ll get back to you shortly</p>
-                    <button type="submit" class="submit-btn-bookademo">Send message</button>
+                    <button type="button" id="contactSubmit" class="submit-btn-bookademo">Send message</button>
+                </div>
+
+                <div id="success_message" class="d-none text-bg-success mt-3" style="padding:12px;border-radius:6px;">
+                    <p style="margin:0;">Message has been sent. Please wait to be contacted.</p>
+                </div>
+                <div id="error_message" class="d-none text-bg-danger mt-3" style="padding:12px;border-radius:6px;">
+                    <p style="margin:0;">Something went wrong and your message could not be sent. Please try again later.</p>
                 </div>
             </form>
         </div>

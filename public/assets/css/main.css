@@ -26055,6 +26055,36 @@ li.has-dropdown1 span {
 #partner-waitlist .theme-btn1::after {
   display: none; /* hide the decorative blue texture so it reads as a clean flat black */
 }
+/* Partner waitlist form — GDPR consent row + validation feedback.
+   Neutral styling only (standard error red); does not alter vosapio's palette. */
+#partner-waitlist .gdpr-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  text-align: left;
+}
+#partner-waitlist .gdpr-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+#partner-waitlist .gdpr-checkbox a {
+  color: #111111;
+  text-decoration: underline;
+}
+#partner-waitlist .gdpr-checkbox.gdpr-error label {
+  color: #dc3545;
+}
+#partner-waitlist .needs-validation.was-validated input:invalid,
+#partner-waitlist .needs-validation.was-validated textarea:invalid {
+  border: 1px solid #dc3545;
+}
 /* This wrapper handles the red margins without touching the global body */
 .agencies-partnership-v2-page-wrapper {
   background-color: #f5f5f5;
@@ -26385,6 +26415,24 @@ li.has-dropdown1 span {
   transition: 0.3s;
 }
 .submit-btn-bookademo:hover { background: #222; color: #fff; }
+
+/* Book a demo form — GDPR consent alignment + validation feedback (neutral; no palette change). */
+.form-bookademo .gdpr-checkbox {
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.form-bookademo .gdpr-checkbox input[type="checkbox"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.form-bookademo .gdpr-checkbox a {
+  color: #111;
+  text-decoration: underline;
+}
+.form-bookademo.needs-validation.was-validated input:invalid,
+.form-bookademo.needs-validation.was-validated textarea:invalid {
+  border: 1px solid #dc3545;
+}
 
 /* Responsive Media Query */
 @media (max-width: 900px) {
