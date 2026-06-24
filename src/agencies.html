@@ -40,7 +40,7 @@
 
             <div class="cta-group-agencies-partnership">
                 <a href="#partner-waitlist" class="button-primary-agencies-partnership">Join our Partner Hub</a>
-                <a href="#" class="button-secondary-agencies-partnership">Add your agency to the directory</a>
+                <a href="#partner-waitlist" class="button-secondary-agencies-partnership">Add your agency to the directory</a>
             </div>
 
         </div> <div class="layers-wrapper-agencies-partnership">
@@ -106,7 +106,7 @@
         <div class="agencies-partnership-v2-form-card">
             <form class="agencies-partnership-v2-form needs-validation" novalidate>
                 <div class="agencies-partnership-v2-form-instruction">
-                    Fill out the information and join the waitlist.
+                    Fill out the information below to get started.
                 </div>
                 <div class="contact-form-details">
                     <div class="row">
@@ -127,21 +127,42 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
+                        <!-- Partner Hub only -->
+                        <div class="col-lg-6 pw-partner">
                             <div class="single-input">
                                 <input id="phoneNumber" type="tel" placeholder="Phone">
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 pw-partner">
                             <div class="single-input">
                                 <input id="subject" type="text" placeholder="Subject" required aria-required="true">
                             </div>
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 pw-partner">
                             <div class="single-input">
                                 <textarea id="message" cols="30" rows="5" placeholder="Message" required aria-required="true"></textarea>
                             </div>
+                        </div>
+
+                        <!-- Agency Directory only -->
+                        <div class="col-lg-6 pw-directory" style="display:none;">
+                            <div class="single-input">
+                                <input id="companyWebsite" type="text" placeholder="Company Website" required aria-required="true" disabled>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 pw-directory" style="display:none;">
+                            <label class="expertise-group-label">Primary Expertise</label>
+                            <div class="expertise-group" id="primaryExpertiseGroup">
+                                <label class="expertise-option"><input type="checkbox" name="primaryExpertise" value="GEO visibility tracking" disabled> GEO visibility tracking</label>
+                                <label class="expertise-option"><input type="checkbox" name="primaryExpertise" value="GEO visibility improvement" disabled> GEO visibility improvement</label>
+                                <label class="expertise-option"><input type="checkbox" name="primaryExpertise" value="Digital PR" disabled> Digital PR</label>
+                                <label class="expertise-option"><input type="checkbox" name="primaryExpertise" value="Brand growth" disabled> Brand growth</label>
+                                <label class="expertise-option"><input type="checkbox" name="primaryExpertise" value="Content creation &amp; optimization" disabled> Content creation &amp; optimization</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 pw-directory" style="display:none;">
+                            <p class="directory-expertise-note">* To be listed in the directory, agencies must offer expertise in AEO, GEO, or AI visibility services.</p>
                         </div>
 
                         <div class="col-lg-12">
@@ -351,7 +372,7 @@
 
                 <rect x="40" y="135" width="520" height="50" rx="8" fill="#1c1c1c"/>
                 <rect x="55" y="147" width="26" height="26" rx="6" fill="green"/>
-                <text x="95" y="165" fill="#ffffff" font-family="Inter, sans-serif" font-size="14" font-weight="500">Zoho</text>
+                <text x="95" y="165" fill="#ffffff" font-family="Inter, sans-serif" font-size="14" font-weight="500">Zo</text>
                 <rect x="360" y="155" width="80" height="8" rx="4" fill="#111"/>
                 <rect x="360" y="155" width="76" height="8" rx="4" fill="#333"/>
                 <text x="495" y="166" fill="#00ff88" font-family="Inter, sans-serif" font-size="14" font-weight="600">95</text>
@@ -385,6 +406,60 @@
 <!--=====SERVICE AREA END=======-->
 @@include('src/partials/footer-menu.html')
 @@include('src/partials/footer-scripts.html')
+<script>
+  // Agencies hero CTAs both scroll to #partner-waitlist; swap heading/instruction AND the form fields by intent.
+  (function () {
+    var form = document.querySelector('#partner-waitlist .agencies-partnership-v2-form');
+    // Require at least one expertise checkbox; carry the group's validity on the first box.
+    var expertiseBoxes = form ? form.querySelectorAll('input[name="primaryExpertise"]') : [];
+    if (expertiseBoxes.length) {
+      var syncExpertiseValidity = function () {
+        var anyChecked = Array.prototype.some.call(expertiseBoxes, function (c) { return c.checked; });
+        expertiseBoxes[0].setCustomValidity(anyChecked ? '' : 'Please select at least one area of expertise.');
+      };
+      Array.prototype.forEach.call(expertiseBoxes, function (c) { c.addEventListener('change', syncExpertiseValidity); });
+      syncExpertiseValidity();
+    }
+    function setContent(title, subtitle, instruction) {
+      var t = document.querySelector('#partner-waitlist .agencies-partnership-v2-title');
+      var s = document.querySelector('#partner-waitlist .agencies-partnership-v2-subtitle');
+      var i = document.querySelector('#partner-waitlist .agencies-partnership-v2-form-instruction');
+      if (t) { t.textContent = title; }
+      if (s) {
+        s.textContent = subtitle || '';
+        s.style.display = subtitle ? '' : 'none';
+      }
+      if (i) { i.textContent = instruction; }
+    }
+    function setMode(mode) {
+      if (!form) { return; }
+      var partner = mode === 'partner';
+      form.querySelectorAll('.pw-partner').forEach(function (col) {
+        col.style.display = partner ? '' : 'none';
+        col.querySelectorAll('input, select, textarea').forEach(function (f) { f.disabled = !partner; });
+      });
+      form.querySelectorAll('.pw-directory').forEach(function (col) {
+        col.style.display = partner ? 'none' : '';
+        col.querySelectorAll('input, select, textarea').forEach(function (f) { f.disabled = partner; });
+      });
+      form.classList.remove('was-validated');
+    }
+    var partnerBtn = document.querySelector('.button-primary-agencies-partnership');
+    var directoryBtn = document.querySelector('.button-secondary-agencies-partnership');
+    if (partnerBtn) {
+      partnerBtn.addEventListener('click', function () {
+        setContent('Become an Agency Partner.', 'Join the waitlist today.', 'Fill out the information below to get started.');
+        setMode('partner');
+      });
+    }
+    if (directoryBtn) {
+      directoryBtn.addEventListener('click', function () {
+        setContent('List your agency in the Vosapio Agency Directory.', '', 'Increase your visibility with brands investing in AEO and GEO by joining the Vosapio Agency Directory');
+        setMode('directory');
+      });
+    }
+  })();
+</script>
 </body>
 </html>
 

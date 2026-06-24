@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submitBtn.addEventListener("click", function () {
 
-        if (!form.checkValidity()) {
+        if (!form.reportValidity()) {
             form.classList.add("was-validated");
             return;
         }
@@ -75,14 +75,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    function val(id) {
+        var el = document.getElementById(id);
+        return el ? (el.value || "").trim() : "";
+    }
+
     function getFormData() {
+        // Agency Directory mode (agencies page): companyWebsite + primaryExpertise are
+        // present and enabled. The backend payload is fixed, so map them into subject/message.
+        var company = document.getElementById("companyWebsite");
+        if (company && !company.disabled) {
+            var expertise = Array.prototype.slice
+                .call(document.querySelectorAll('input[name="primaryExpertise"]:checked'))
+                .map(function (c) { return c.value; })
+                .join(", ");
+            return {
+                firstName: val("firstName"),
+                lastName: val("lastName"),
+                email: val("email"),
+                phoneNumber: "",
+                subject: "Agency Directory listing",
+                message: "Company website: " + val("companyWebsite") + "\nPrimary expertise: " + expertise
+            };
+        }
         return {
-            firstName: firstName.value.trim(),
-            lastName: lastName.value.trim(),
-            email: email.value.trim(),
-            phoneNumber: phoneNumber.value.trim(),
-            subject: subject.value.trim(),
-            message: message.value.trim()
+            firstName: val("firstName"),
+            lastName: val("lastName"),
+            email: val("email"),
+            phoneNumber: val("phoneNumber"),
+            subject: val("subject"),
+            message: val("message")
         };
     }
 });

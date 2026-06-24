@@ -26082,8 +26082,56 @@ li.has-dropdown1 span {
   color: #dc3545;
 }
 #partner-waitlist .needs-validation.was-validated input:invalid,
+#partner-waitlist .needs-validation.was-validated select:invalid,
 #partner-waitlist .needs-validation.was-validated textarea:invalid {
   border: 1px solid #dc3545;
+}
+/* Center the form instruction (drop the stray 60px left offset) so long copy
+   like the directory tagline stays balanced. Scoped to agencies only. */
+#partner-waitlist .agencies-partnership-v2-form-instruction {
+  margin-left: 0;
+  text-align: center;
+}
+/* Primary Expertise — multi-select checkbox group (agencies directory mode). */
+#partner-waitlist .expertise-group-label {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  color: #676879;
+  margin-bottom: 8px;
+}
+#partner-waitlist .expertise-group {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+#partner-waitlist .expertise-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+}
+#partner-waitlist .expertise-option:hover {
+  background-color: #f5f5f5;
+}
+#partner-waitlist .expertise-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #111;
+}
+#partner-waitlist .directory-expertise-note {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 16px;
+  line-height: 1.5;
+  text-align: left;
 }
 /* This wrapper handles the red margins without touching the global body */
 .agencies-partnership-v2-page-wrapper {
@@ -26568,6 +26616,12 @@ li.has-dropdown1 span {
 
 .theme-btn8-status:hover {
   color: #10b981;
+}
+/* `.button a { display:inline-block }` was overriding the flex container, leaving the
+   dot off-center. Restore flex so the green dot and label are vertically aligned. */
+.header1-buttons .button a.theme-btn8-status {
+  display: inline-flex !important;
+  align-items: center;
 }
 
 /* The Green Dot */
